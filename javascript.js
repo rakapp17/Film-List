@@ -93,12 +93,24 @@ $(document).ready(function () {
     });
   };
 
+  // fetch page 1 when first load
   fetchData(1);
+  // activate page 1
+  $(`#page-1`).addClass("active");
 
   for (let page = 1; page <= 5; page++) {
     $(`#page-${page}`).click(() => {
-      $(`#page-${page}`).addClass("active");
+      // fetch data per page
       fetchData(page);
+      
+      // change active page
+      for (let pageIdx = 1; pageIdx <= 5; pageIdx++) {
+        if (page === pageIdx) {
+          $(`#page-${pageIdx}`).addClass("active")
+        } else {
+          $(`#page-${pageIdx}`).removeClass("active")
+        }
+      }
     });
   }
 });
