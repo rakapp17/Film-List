@@ -33,11 +33,11 @@ $(document).ready(function () {
             Details
           </button></td> `;
           html += `</tr>`;
-  
+
           // $("tbody").append(html);
           // $("tbody").html(html);
-          dataTable.push(html)
-  
+          dataTable.push(html);
+
           let modal = `<div
           class="modal fade"
           id="exampleModal${film.id}"
@@ -71,7 +71,7 @@ $(document).ready(function () {
             </div>
           </div>
         </div>`;
-  
+
           $("body").append(modal);
           console.log(i + 1);
           console.log(film.id);
@@ -82,23 +82,23 @@ $(document).ready(function () {
         }
         //Fitur Details
 
-        $("tbody").empty()
-        dataTable.forEach(data => {
+        $("tbody").empty();
+        dataTable.forEach((data) => {
           $("tbody").append(data);
-        })
+        });
       },
       error: function (err) {
         console.log(err);
       },
     });
-  }
+  };
 
   fetchData(1);
 
   for (let page = 1; page <= 5; page++) {
     $(`#page-${page}`).click(() => {
-      fetchData(page)
+      $(`#page-${page}`).addClass("active");
+      fetchData(page);
     });
   }
-
 });
